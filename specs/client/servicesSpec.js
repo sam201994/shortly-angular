@@ -36,10 +36,10 @@ describe('Services', function () {
         { title: 'Reddit',
           url: 'https://reddit.com/r/javascript' }
       ];
-
       $httpBackend.expect('GET', '/api/links').respond(mockResponse);
 
       Links.getAll().then(function (links) {
+        // console.log("----------links--------------", links);
         expect(links).to.deep.equal(mockResponse);
       });
 
@@ -58,7 +58,7 @@ describe('Services', function () {
 
       Links.addOne(github).then(function (resp) {
         expect(resp.status).to.equal(201);
-        expect(resp.data.title).to.equal('Hack Reactor Labs');
+        expect(resp.data.title).to.equal('reactorcore');
       });
 
       $httpBackend.flush();

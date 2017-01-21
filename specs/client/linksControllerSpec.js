@@ -26,6 +26,7 @@ describe('LinksController', function () {
   }));
 
   it('should have a data property on the $scope', function () {
+   // console.log("---------------$scope-----------", $scope);
     createController();
     expect($scope.data).to.be.an('object');
   });
@@ -44,10 +45,10 @@ describe('LinksController', function () {
   it('should populate the data property after the call to `Links.getAll()`', function () {
     var mockLinks = [{}, {}, {}];
     $httpBackend.expectGET('/api/links').respond(mockLinks);
-
+    // console.log("---mockLInks ", mockLinks);
     createController();
     $httpBackend.flush();
-
+    //console.log("---$scope.data.links ", $scope.data.links);
     expect($scope.data.links).to.deep.equal(mockLinks);
   });
 });
